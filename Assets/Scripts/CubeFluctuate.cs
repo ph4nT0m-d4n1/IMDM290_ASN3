@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class CubeGrow : MonoBehaviour
+public class CubeFluctuate : MonoBehaviour
 {
-    float time;
     float xScale;
     float yScale;
     float zScale;
@@ -16,7 +15,6 @@ public class CubeGrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime * AudioSpectrum.audioAmp;
-        gameObject.transform.localScale = new Vector3(xScale, yScale * time, zScale);
+        gameObject.transform.localScale = new Vector3(xScale, yScale * AudioSpectrum.audioAmp, zScale);
     }
 }

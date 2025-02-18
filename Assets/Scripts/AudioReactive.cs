@@ -16,8 +16,6 @@ public class AudioReactive : MonoBehaviour
     float lerpFraction; // Lerp point between 0~1
     float t;
 
-    public GameObject cube;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +66,6 @@ public class AudioReactive : MonoBehaviour
         // Time.deltaTime = The interval in seconds from the last frame to the current one
         // but what if time flows according to the music's amplitude?
         time += Time.deltaTime * AudioSpectrum.audioAmp;
-        cube.transform.localScale = new Vector3 (1f, 1f * time, 1f);
         // what to update over time?
         for (int i = 0; i < numSphere; i++)
         {
