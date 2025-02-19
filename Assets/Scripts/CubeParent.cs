@@ -28,15 +28,14 @@ public class CubeParent : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime * AudioSpectrum.audioAmp;
-        
-        if (time >= 35)
+        Debug.Log(time);
+
+        if (time >= 34.96f) //the cubes appear when the exposition ends
         {
             for (int i = 0; i < transform.childCount; i++)
             {
                 cubes[i].SetActive(true);
             }
         }
-
-        Debug.Log(time);
     }
 }

@@ -16,7 +16,6 @@ public class CubeGrow : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime * AudioSpectrum.audioAmp;
-        Debug.Log(time);
 
         gameObject.transform.localScale = new Vector3(xScale, yScale * time, zScale);
         Renderer cubeRenderer = gameObject.GetComponent<Renderer>();
