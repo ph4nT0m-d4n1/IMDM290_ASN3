@@ -13,10 +13,16 @@ public class CubeGrow : MonoBehaviour
         zScale = gameObject.transform.localScale.z;
     }
 
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime * AudioSpectrum.audioAmp;
+        Debug.Log(time);
+
         gameObject.transform.localScale = new Vector3(xScale, yScale * time, zScale);
+        Renderer cubeRenderer = gameObject.GetComponent<Renderer>();
+
+        float hue = 1f; 
+        Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Cos(time)), Mathf.Cos(AudioSpectrum.audioAmp / 10f), 2f + Mathf.Cos(time)); 
+        cubeRenderer.material.color = color;
     }
 }
