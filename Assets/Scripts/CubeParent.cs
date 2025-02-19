@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Parent : MonoBehaviour
+public class CubeParent : MonoBehaviour
 {
     GameObject [] cubes;
+    float time;
     void Start()
     {
         cubes = new GameObject [transform.childCount]; //the array's value is the amount of children the gameobject has
@@ -10,6 +11,7 @@ public class Parent : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             cubes[i] = transform.GetChild(i).gameObject;
+            cubes[i].SetActive(false);
 
             if (i % 2 == 0)
             {
@@ -21,13 +23,20 @@ public class Parent : MonoBehaviour
                 CubeGrow grow = cubes[i].AddComponent<CubeGrow>();
             }
         }
-        
-        Debug.Log(cubes);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime * AudioSpectrum.audioAmp;
         
+        if (time >= 35)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                cubes[i].SetActive(true);
+            }
+        }
+
+        Debug.Log(time);
     }
 }
