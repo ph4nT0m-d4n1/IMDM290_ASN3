@@ -3,7 +3,7 @@ using UnityEngine;
 public class CubeParent : MonoBehaviour
 {
     GameObject [] cubes;
-    float time;
+    public static float time;
     void Start()
     {
         cubes = new GameObject [transform.childCount]; //the array's value is the amount of children the gameobject has
@@ -28,7 +28,7 @@ public class CubeParent : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime * AudioSpectrum.audioAmp;
-        Debug.Log(time);
+        //Debug.Log(time);
 
         if (time >= 34.96f) //the cubes appear when the exposition ends
         {
