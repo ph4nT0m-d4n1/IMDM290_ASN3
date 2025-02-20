@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CubeMovement : MonoBehaviour
 {
     //a simple camera movement script
     public GameObject target;
