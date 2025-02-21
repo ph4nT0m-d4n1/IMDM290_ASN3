@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class CubeMovement : MonoBehaviour
 {
-    //a simple camera movement script
-    public GameObject target;
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
+        if (CubeParent.time >= 35)
+        {
+            transform.position += new Vector3 (0f, 0f, -0.1f * Time.deltaTime);
+        }
         
     }
 }

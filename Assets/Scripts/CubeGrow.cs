@@ -41,8 +41,8 @@ public class CubeGrow : MonoBehaviour
         {
             for (int i = 0; i < 100; i++)
             {
-                float hue = i/100;
-                Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Cos(AudioSpectrum.audioAmp)), Mathf.Cos(AudioSpectrum.audioAmp / 10f), 2f + Mathf.Cos(time)); 
+                float hue = 1f;
+                Color color = Color.HSVToRGB(Mathf.Abs(hue), Mathf.Cos(AudioSpectrum.audioAmp / 10f), 2f + Mathf.Cos(time)); 
                 cubeRenderer.material.color = color;
             }
 

@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class ColliderScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    GameObject cubeSystem;
+    
     void Start()
     {
-        
+        cubeSystem = GameObject.Find("cube_system");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "MainCamera")
+        {
+            Instantiate (cubeSystem, new Vector3(0f, 1.5f, 10f), Quaternion.identity);
+            Debug.Log("all good!");
+        }
+    }
+
+   
 }

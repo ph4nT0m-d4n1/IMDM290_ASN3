@@ -18,7 +18,7 @@ public class CubeFluctuate : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime * AudioSpectrum.audioAmp;
-        Debug.Log(time);
+        // Debug.Log(time);
         
         gameObject.transform.localScale = new Vector3(xScale, yScale * time * AudioSpectrum.audioAmp, zScale);
         Renderer cubeRenderer = gameObject.GetComponent<Renderer>();
