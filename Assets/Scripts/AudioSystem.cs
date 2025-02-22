@@ -38,7 +38,7 @@ public class AudioSystem : MonoBehaviour
         if (cube_sys2)
         {
             sys2_parent = cube_sys2.transform.GetChild(0).gameObject;
-            Debug.Log(sys2_parent);
+            // Debug.Log(sys2_parent);
 
             if (CubeParent.time >= 168 && CubeParent.time <= 175)
             {
@@ -49,8 +49,6 @@ public class AudioSystem : MonoBehaviour
                 sys2_parent.SetActive(true);
             }
         }
-
-        
     }
 
     void ManageAudioSys()

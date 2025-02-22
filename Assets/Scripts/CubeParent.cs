@@ -26,8 +26,7 @@ public class CubeParent : MonoBehaviour
             if (i % 2 == 0)
             {
                 CubeFluctuate fluctuate = cubes[i].AddComponent<CubeFluctuate>();
-            }
-            
+            }   
             else
             {
                 CubeGrow grow = cubes[i].AddComponent<CubeGrow>();
