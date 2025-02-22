@@ -1,26 +1,34 @@
-/*using UnityEngine;
+using UnityEngine;
+using Unity.Mathematics;
 using UnityEngine.Splines;
 
-public class splineFollower : MonoBehaviour
+public class CameraSplineFollower : MonoBehaviour
 {
-    
-    public SplineContainer splineContainer;
-    public float speed = 1f;
-    public float distanceTravelled = 0f;
+    public SplineAnimate splineAnimate;  // Drag the Cube's SplineAnimate here
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (splineConatiner == null) return;
-        if (distanceTravelled > 1f) prdistanceTravelledogress -= 1f;
+        if (splineAnimate == null) return;
 
-        Spline spline = splineContainer.Spline;
-        if (spline == null) return; 
+        // Get SplineContainer from SplineAnimate
+        SplineContainer splineContainer = splineAnimate.Container;
+        if (splineContainer == null) return;
 
-        spline.Evaluate(distanceTravelled, out Vector3 position, out Vector3 tangent);
+        // Get current progress along the spline (0 to 1)
+        float progress = splineAnimate.NormalizedTime;
 
+        // Get position and tangent at current progress
+        Vector3 position = (Vector3)splineContainer.Spline.EvaluatePosition(progress);
+        Vector3 tangent = math.normalize((Vector3)splineContainer.Spline.EvaluateTangent(progress));
+
+        // Move the camera to the current spline position
         transform.position = position;
-        transform.rotation = Quaternion.LookRotation(tangent);
+
+        // Make the camera face the movement direction (tangent)
+        if (tangent != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(tangent, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
     }
 }
-*/
