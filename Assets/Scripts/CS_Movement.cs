@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeMovement : MonoBehaviour
+public class CubeSystemMovement : MonoBehaviour
 {
 
     void Start()
@@ -12,7 +12,7 @@ public class CubeMovement : MonoBehaviour
     {
         if (CubeParent.time >= 35)
         {
-            transform.position += new Vector3 (0f, 0f, -0.1f * Time.deltaTime);
+            transform.position += new Vector3 (0f, .1f * Time.deltaTime, -0.3f * Time.deltaTime);
         }
         
     }

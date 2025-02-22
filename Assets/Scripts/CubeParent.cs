@@ -6,6 +6,16 @@ public class CubeParent : MonoBehaviour
     public static float time;
     void Start()
     {
+        InitializeChildren();
+    }
+
+    void Update()
+    {
+        AwakenChildren();
+    }
+
+    void InitializeChildren()
+    {
         cubes = new GameObject [transform.childCount]; //the array's value is the amount of children the gameobject has
 
         for (int i = 0; i < transform.childCount; i++)
@@ -25,12 +35,16 @@ public class CubeParent : MonoBehaviour
         }
     }
 
-    void Update()
+    void AwakenChildren()
     {
-        time += Time.deltaTime * AudioSpectrum.audioAmp;
-        //Debug.Log(time);
+        time += Time.deltaTime * AudioSystem.audioAmp;
+        // Debug.Log(time);
 
-        if (time >= 34.96f) //the cubes appear when the exposition ends
+        //time of new instrument = 34.15 (we have 34.96) ?
+        //time of ___ = 130
+        // time of beat drop = 168
+
+        if (time >= 34f) //the cubes appear when the exposition ends
         {
             for (int i = 0; i < transform.childCount; i++)
             {
