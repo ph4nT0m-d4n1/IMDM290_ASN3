@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2562,7 +2562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &426062145
 Transform:
   m_ObjectHideFlags: 0
@@ -2694,6 +2694,7 @@ GameObject:
   - component: {fileID: 714971884}
   - component: {fileID: 714971883}
   - component: {fileID: 714971882}
+  - component: {fileID: 714971887}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2814,6 +2815,19 @@ Transform:
   - {fileID: 426062145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &714971887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714971881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b3f980a5675c74cb718c381f71bb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splineAnimate: {fileID: 714971882}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
