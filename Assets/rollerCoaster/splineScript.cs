@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 [ExecuteInEditMode]
@@ -23,6 +24,7 @@ public class CircularFunctionSpline : MonoBehaviour
         }
 
         Spline spline = new Spline();
+        spline.SetTangentMode(TangentMode.AutoSmooth);
         float angleStep = 2f * Mathf.PI / pointCount;
 
         for (int i = 0; i < pointCount; i++)
@@ -38,11 +40,14 @@ public class CircularFunctionSpline : MonoBehaviour
 
             // Create a knot at each point
             BezierKnot knot = new BezierKnot(new Vector3(x, y, z));
+
+            
+
             spline.Add(knot);
         }
         // Close the spline loop to form a circle
         spline.Closed = true;
         splineContainer.Spline = spline;
 
-        }
     }
+}
