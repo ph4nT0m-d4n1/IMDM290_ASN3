@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent (typeof(AudioSource))]
-
 public class AudioSystem : MonoBehaviour
 {
     [HideInInspector] public int counter;
@@ -44,7 +43,7 @@ public class AudioSystem : MonoBehaviour
             {
                 sys2_parent.SetActive(false);
             }
-            else if (CubeParent.time >= 178)
+            else if (CubeParent.time >= 250)
             {
                 sys2_parent.SetActive(true);
             }
