@@ -19,7 +19,7 @@ public class ParticleSys : MonoBehaviour
         DancingParticles();
         ColorFulParticles();
 
-        if (CubeParent.time >= 30)
+        if (CubeParent.time >= 31.25)
         {
             particleSys.Stop();
         }

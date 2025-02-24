@@ -32,7 +32,7 @@ public class ColliderScript : MonoBehaviour
             other_cube_system.name = "cube_system" + ASM.counter;
             ASM.counter += 1;
 
-            Debug.Log("cube system counter: " + ASM.counter);
+            // Debug.Log("cube system counter: " + ASM.counter);
         }
     }
 }

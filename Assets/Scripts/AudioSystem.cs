@@ -13,6 +13,7 @@ public class AudioSystem : MonoBehaviour
 
     GameObject cube_sys2;
     GameObject sys2_parent;
+    GameObject sys2_collider;
     AudioSource source;
     void Start()
     {
@@ -37,15 +38,13 @@ public class AudioSystem : MonoBehaviour
         if (cube_sys2)
         {
             sys2_parent = cube_sys2.transform.GetChild(0).gameObject;
+            sys2_collider = cube_sys2.transform.GetChild(1).gameObject;
             // Debug.Log(sys2_parent);
 
-            if (CubeParent.time >= 168 && CubeParent.time <= 175)
+            if (CubeParent.time >= 168)
             {
                 sys2_parent.SetActive(false);
-            }
-            else if (CubeParent.time >= 250)
-            {
-                sys2_parent.SetActive(true);
+                sys2_collider.SetActive(false);
             }
         }
     }
