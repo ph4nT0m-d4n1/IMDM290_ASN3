@@ -35,7 +35,7 @@ public class AudioSystem : MonoBehaviour
     void Update()
     {
         audioTime += Time.deltaTime  * audioAmp;
-        Debug.Log(audioTime);
+        // Debug.Log(audioTime);
 
         ManageAudioSys();
         ManageCubeSys();
@@ -81,9 +81,10 @@ public class AudioSystem : MonoBehaviour
     void ManageParticleSys()
     {
         //523 , cube sys 4
-        if (audioTime >= 523f)
+        if (audioTime >= 230f)
         {
             particleSys2.Play();
+            Debug.Log("cheese");
         }
     }
 }

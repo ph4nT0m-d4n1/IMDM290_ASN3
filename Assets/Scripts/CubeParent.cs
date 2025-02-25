@@ -15,6 +15,7 @@ public class CubeParent : MonoBehaviour
     void Update()
     {
         AwakenChildren();
+        MorphCubes();
     }
 
     void InitializeChildren()
@@ -52,5 +53,38 @@ public class CubeParent : MonoBehaviour
                 cubes[i].SetActive(true);
             }
         }
+    }
+
+    void MorphCubes()
+    {
+        if (time >= 235f)
+        {
+            for (int i = replacedCubes; i < transform.childCount; i++)
+            {
+
+                StartCoroutine(ShrinkCubeAndSpawnSphere(cubes[i]));
+            }
+            replacedCubes = transform.childCount; // Ensure all cubes are counted as replaced
+        }
+    }
+
+
+    IEnumerator ShrinkCubeAndSpawnSphere(GameObject cube)
+    {
+        Vector3 startScale = cube.transform.localScale;
+        Vector3 targetScale = Vector3.zero;
+
+        float shrinkDuration = 1.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < shrinkDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            cube.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / shrinkDuration);
+            yield return null;
+        }
+
+        // Disable cube and enable the sphere
+        cube.SetActive(false);
     }
 }
