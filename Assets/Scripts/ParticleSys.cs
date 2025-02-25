@@ -10,11 +10,6 @@ public class ParticleSys : MonoBehaviour
         particleSys = gameObject.GetComponent<ParticleSystem>();
         var col = particleSys.colorOverLifetime;
         col.enabled = true;
-
-        if (particleSys.name == "particle_system (1)")
-        {
-            particleSys.Stop();
-        }
         
         // Debug.Log(particleSys);
     }
@@ -24,10 +19,11 @@ public class ParticleSys : MonoBehaviour
         DancingParticles();
         ColorFulParticles();
 
-        if (CubeParent.time >= 31.25)
+        if (CubeParent.time >= 31.25f && CubeParent.time <= 32f)
         {
             particleSys.Stop();
         }
+        
     }
 
     void DancingParticles()

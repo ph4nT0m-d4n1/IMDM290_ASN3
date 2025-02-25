@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Collections;
 
 public class CubeParent : MonoBehaviour
 {
     GameObject [] cubes;
     public static float time;
     int replacedCubes = 0;
-    GameObject sphere_system;
+
     void Start()
     {
         InitializeChildren();
@@ -16,6 +17,7 @@ public class CubeParent : MonoBehaviour
     {
         AwakenChildren();
         MorphCubes();
+        CollapseCubes();
     }
 
     void InitializeChildren()
@@ -41,7 +43,7 @@ public class CubeParent : MonoBehaviour
     void AwakenChildren()
     {
         time += Time.deltaTime * AudioSystem.audioAmp;
-        // Debug.Log(time);
+        Debug.Log(time);
 
         //time of ___ = 130
         // time of beat drop = 168
@@ -61,20 +63,19 @@ public class CubeParent : MonoBehaviour
         {
             for (int i = replacedCubes; i < transform.childCount; i++)
             {
-
-                StartCoroutine(ShrinkCubeAndSpawnSphere(cubes[i]));
+                StartCoroutine(ShrinkCubes(cubes[i]));
             }
             replacedCubes = transform.childCount; // Ensure all cubes are counted as replaced
         }
     }
 
 
-    IEnumerator ShrinkCubeAndSpawnSphere(GameObject cube)
+    IEnumerator ShrinkCubes(GameObject cube)
     {
         Vector3 startScale = cube.transform.localScale;
         Vector3 targetScale = Vector3.zero;
 
-        float shrinkDuration = 1.5f;
+        float shrinkDuration = 1.1f;
         float elapsedTime = 0f;
 
         while (elapsedTime < shrinkDuration)
@@ -83,8 +84,32 @@ public class CubeParent : MonoBehaviour
             cube.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / shrinkDuration);
             yield return null;
         }
+    }
 
-        // Disable cube and enable the sphere
-        cube.SetActive(false);
+    void CollapseCubes()
+    {
+        if (time >= 770f)
+        {
+            foreach (GameObject cube in cubes)
+            {
+                Destroy(cube.GetComponent<CubeFluctuate>());
+                Destroy(cube.GetComponent<CubeGrow>());
+
+                float x = cube.transform.localScale.x;
+                float y = cube.transform.localScale.y;
+                float z = cube.transform.localScale.z;
+
+                if (y > 0.01f)  // Prevents infinitely small scaling issues
+                {
+                    cube.transform.localScale = new Vector3(x, y * 0.5f, z);
+                }
+                else
+                {
+                    cube.transform.localScale = new Vector3(x, 0, z); // Fully collapse
+                }
+
+            }
+        }
+        
     }
 }

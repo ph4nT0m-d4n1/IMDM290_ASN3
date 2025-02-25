@@ -14,11 +14,8 @@ public class AudioSystem : MonoBehaviour
     public GameObject particleSysHolder;
     ParticleSystem particleSys2;
 
-    GameObject cube_sys;
-    GameObject cube_sys1;
     GameObject cube_sys2;
     GameObject sys2_parent;
-    GameObject sys2_collider;
     AudioSource source;
     float audioTime;
     void Start()
@@ -32,7 +29,6 @@ public class AudioSystem : MonoBehaviour
         particleSys2 = particleSysHolder.GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         audioTime += Time.deltaTime  * audioAmp;
@@ -45,25 +41,20 @@ public class AudioSystem : MonoBehaviour
 
     void ManageCubeSys()
     {
-        cube_sys = GameObject.Find("cube_system");
-        cube_sys1 = GameObject.Find("cube_system1");
         cube_sys2 = GameObject.Find("cube_system2");
 
         if (cube_sys2)
         {
             sys2_parent = cube_sys2.transform.GetChild(0).gameObject;
-            sys2_collider = cube_sys2.transform.GetChild(1).gameObject;
             // Debug.Log(sys2_parent);
 
             if (CubeParent.time >= 168)
             {
                 sys2_parent.SetActive(false);
             }
-
-            if (audioTime >= 1000)
+            else if (CubeParent.time >= 250)
             {
-                cube_sys.transform.GetChild(0).gameObject.SetActive(false);
-                cube_sys1.transform.GetChild(0).gameObject.SetActive(false);
+                 sys2_parent.SetActive(true);
             }
         }
     }
