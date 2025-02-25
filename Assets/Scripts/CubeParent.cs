@@ -99,13 +99,13 @@ public class CubeParent : MonoBehaviour
                 float y = cube.transform.localScale.y;
                 float z = cube.transform.localScale.z;
 
-                if (y > 0.01f)  // Prevents infinitely small scaling issues
+                if (y > 2f)  // Prevents infinitely small scaling issues
                 {
                     cube.transform.localScale = new Vector3(x, y * 0.5f, z);
                 }
                 else
                 {
-                    cube.transform.localScale = new Vector3(x, 0, z); // Fully collapse
+                    cube.transform.localScale = new Vector3(x, 1, z); // Fully collapse
                 }
 
             }
