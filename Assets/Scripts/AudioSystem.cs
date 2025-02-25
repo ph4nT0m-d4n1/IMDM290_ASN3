@@ -51,7 +51,6 @@ public class AudioSystem : MonoBehaviour
             if (CubeParent.time >= 168)
             {
                 sys2_parent.SetActive(false);
-                sys2_collider.SetActive(false);
             }
 
             if (audioTime >= 1000)

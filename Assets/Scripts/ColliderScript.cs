@@ -7,15 +7,12 @@ public class ColliderScript : MonoBehaviour
     GameObject audioSystem; 
 
     AudioSystem ASM;
-
-    CubeSystemMovement CSM;
     
     void Start()
     {
         cubeSystem = GameObject.Find("cube_system");
         audioSystem = GameObject.Find("audio_system");
 
-        CSM = cubeSystem.GetComponent<CubeSystemMovement>();
         ASM = audioSystem.GetComponent<AudioSystem>();
     }
 
