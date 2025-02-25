@@ -11,6 +11,8 @@ public class AudioSystem : MonoBehaviour
     [HideInInspector] public static float[] samples;
     [HideInInspector] public static float audioAmp = 0f;
 
+    ParticleSystem particleSys2;
+
     GameObject cube_sys;
     GameObject cube_sys1;
     GameObject cube_sys2;
@@ -25,6 +27,8 @@ public class AudioSystem : MonoBehaviour
 
         source = GetComponent<AudioSource>();   
         samples = new float[FFTSIZE];   
+
+        particleSys2 = GameObject.Find("particle_system (1)").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -32,8 +36,10 @@ public class AudioSystem : MonoBehaviour
     {
         audioTime += Time.deltaTime  * audioAmp;
         Debug.Log(audioTime);
+
         ManageAudioSys();
         ManageCubeSys();
+        ManageParticleSys();
     }
 
     void ManageCubeSys()
@@ -63,13 +69,21 @@ public class AudioSystem : MonoBehaviour
 
     void ManageAudioSys() //imported from Prof. Lee's AudioSpectrum script
     {
-        // source (time domain) transforms into samples in frequency domain 
         source.GetSpectrumData(samples, 0, FFTWindow.Hanning);
-        // empty first then pull down the value.
+
         audioAmp = 0f;
         for (int i = 0; i < FFTSIZE; i++)
         {
             audioAmp += samples[i];
         }   
+    }
+
+    void ManageParticleSys()
+    {
+        //523 , cube sys 4
+        if (audioTime >= 523f)
+        {
+            particleSys2.Play();
+        }
     }
 }

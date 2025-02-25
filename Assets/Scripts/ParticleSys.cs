@@ -10,6 +10,11 @@ public class ParticleSys : MonoBehaviour
         particleSys = gameObject.GetComponent<ParticleSystem>();
         var col = particleSys.colorOverLifetime;
         col.enabled = true;
+
+        if (particleSys.name == "particle_system (1)")
+        {
+            particleSys.Stop();
+        }
         
         // Debug.Log(particleSys);
     }
