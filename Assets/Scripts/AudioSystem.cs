@@ -11,6 +11,7 @@ public class AudioSystem : MonoBehaviour
     [HideInInspector] public static float[] samples;
     [HideInInspector] public static float audioAmp = 0f;
 
+    public GameObject particleSysHolder;
     ParticleSystem particleSys2;
 
     GameObject cube_sys;
@@ -28,7 +29,7 @@ public class AudioSystem : MonoBehaviour
         source = GetComponent<AudioSource>();   
         samples = new float[FFTSIZE];   
 
-        particleSys2 = GameObject.Find("particle_system (1)").GetComponent<ParticleSystem>();
+        particleSys2 = particleSysHolder.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -84,7 +85,6 @@ public class AudioSystem : MonoBehaviour
         if (audioTime >= 230f)
         {
             particleSys2.Play();
-            Debug.Log("cheese");
         }
     }
 }

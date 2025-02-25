@@ -1878,6 +1878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
+  particleSysHolder: {fileID: 2075788718}
 --- !u!82 &227609765
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24321,7 +24322,7 @@ GameObject:
   - component: {fileID: 2075788720}
   - component: {fileID: 2075788719}
   m_Layer: 0
-  m_Name: particle_system (1)
+  m_Name: particle_system1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
