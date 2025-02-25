@@ -26,9 +26,9 @@ public class ColliderScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "MainCamera")
+        if (other.gameObject.tag == "Trigger")
         {
-            GameObject other_cube_system = Instantiate (cubeSystem, new Vector3(0f, 1.5f, 10f), Quaternion.identity);
+            GameObject other_cube_system = Instantiate (cubeSystem, other.transform.position, Quaternion.identity);
             other_cube_system.name = "cube_system" + ASM.counter;
             ASM.counter += 1;
 
