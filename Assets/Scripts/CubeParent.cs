@@ -41,7 +41,7 @@ public class CubeParent : MonoBehaviour
     void AwakenChildren()
     {
         time += Time.deltaTime * AudioSystem.audioAmp;
-        Debug.Log(time);
+        // Debug.Log(time);
 
         //time of ___ = 130
         // time of beat drop = 168
